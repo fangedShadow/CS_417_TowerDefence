@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd954f5b3acd720ab54a6c773389175, type: 3}
+  m_Name: SlowTower_L1_Upgrade
+  m_EditorClassIdentifier: TowerDefence.Shared::TowerDefence.Shared.TowerUpgradeData
+  CurrentStats: {fileID: 11400000, guid: e6a461e0ccc6d84aab0f55679c7513e5, type: 2}
+  NextStats: {fileID: 11400000, guid: c6ceda07fa72c0294ab4560b755ade72, type: 2}
+  NextPrefab: {fileID: 7050475524805518822, guid: 72e2faad819438a8295aba15d8f9d199, type: 3}
+  UpgradePointCost: 1

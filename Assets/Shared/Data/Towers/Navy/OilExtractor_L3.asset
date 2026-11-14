@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928f0e3f019bda038a6ac5b9119109ba, type: 3}
+  m_Name: OilExtractor_L3
+  m_EditorClassIdentifier: TowerDefence.Shared::TowerDefence.Shared.TowerStatsData
+  TowerId: navy.oilextractor_l3
+  Faction: 1
+  Kind: 4
+  Category: 3
+  UpgradeLevel: 3
+  MaxHealth: 400
+  Armor: 0
+  Damage: 0
+  AttackRange: 8
+  AttackInterval: 1
+  Targets: 2
+  ProjectileSpeed: 15
+  ProjectileSize: 1
+  SplashRadius: 0
+  ArmorPenetration: 0
+  WaveWidth: 5
+  WaveRange: 18
+  AbilityCooldown: 0
+  PurchaseCost: 600
+  UpgradeCost: 0
+  SellValue: 300
+  RepairCost: 80
+  SlowStrength: 0
+  SlowDuration: 1.5
+  PoisonDamage: 0
+  PoisonDuration: 0
+  PoisonTickInterval: 1
+  BuffStrength: 0.25
+  SupportRange: 8
+  ResourceGenerationAmount: 25
+  ResourceExpGenerationAmount: 5
+  ResourceUpgradePointGenerationAmount: 1
+  ResourceGenerationInterval: 10
