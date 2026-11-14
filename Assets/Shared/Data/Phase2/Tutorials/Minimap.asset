@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a73f76e324318e5907c19d3b066f8c, type: 3}
+  m_Name: Minimap
+  m_EditorClassIdentifier: TowerDefence.Battlefield::TowerDefence.Battlefield.TutorialDefinition
+  Id: Minimap
+  Title: Your live minimap
+  Pages:
+  - 'The bottom-right minimap is a live overhead view: base, land, ocean, and built
+    structures update together.'
+  - Expand it to commander overview for construction and management. There is only
+    one battlefield and one shared resource wallet.

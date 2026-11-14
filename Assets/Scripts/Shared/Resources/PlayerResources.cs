@@ -50,5 +50,13 @@ namespace TowerDefence.Shared
             Changed?.Invoke();
             return true;
         }
+        public bool TrySpend(int moneyCost, int pointCost)
+        {
+            Validate(moneyCost); Validate(pointCost);
+            if (money < moneyCost || upgradePoints < pointCost) return false;
+            money -= moneyCost; upgradePoints -= pointCost;
+            Changed?.Invoke();
+            return true;
+        }
     }
 }

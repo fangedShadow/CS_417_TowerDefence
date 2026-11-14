@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a73f76e324318e5907c19d3b066f8c, type: 3}
+  m_Name: BuyTower
+  m_EditorClassIdentifier: TowerDefence.Battlefield::TowerDefence.Battlefield.TutorialDefinition
+  Id: BuyTower
+  Title: How to buy a tower
+  Pages:
+  - Open the construction panel. Choose a structure that is unlocked and affordable.
+    Red buttons need more Money; gray buttons show locked requirements.
+  - Use the controller trigger or mouse to point at the battlefield, or expand the
+    live minimap into commander overview.

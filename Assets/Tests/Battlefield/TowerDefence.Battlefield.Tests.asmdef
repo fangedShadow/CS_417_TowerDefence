@@ -1,0 +1,6 @@
+{
+  "name": "TowerDefence.Battlefield.Tests",
+  "references": ["TowerDefence.Battlefield", "TowerDefence.Shared", "TowerDefence.Navy", "Unity.TextMeshPro", "UnityEngine.UI", "Unity.InputSystem", "Unity.XR.Interaction.Toolkit", "Unity.XR.CoreUtils"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"]
+}

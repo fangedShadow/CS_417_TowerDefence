@@ -1,0 +1,4 @@
+{
+  "name": "TowerDefence.Battlefield",
+  "references": ["TowerDefence.Shared", "TowerDefence.Navy", "Unity.TextMeshPro", "UnityEngine.UI", "Unity.InputSystem", "Unity.XR.Interaction.Toolkit", "Unity.XR.CoreUtils"]
+}
