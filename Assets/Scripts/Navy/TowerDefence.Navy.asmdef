@@ -1,0 +1,5 @@
+{
+  "name": "TowerDefence.Navy",
+  "rootNamespace": "TowerDefence.Navy",
+  "references": ["TowerDefence.Shared"]
+}

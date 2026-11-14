@@ -1,0 +1,6 @@
+{
+  "name": "TowerDefence.Navy.Tests",
+  "references": ["TowerDefence.Shared", "TowerDefence.Navy"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"]
+}
