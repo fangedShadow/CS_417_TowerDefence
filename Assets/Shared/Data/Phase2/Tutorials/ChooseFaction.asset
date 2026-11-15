@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: ChooseFaction
   Title: Choose your faction
   Pages:
-  - Army, Navy, and Sky defend the same base with different structures. Start with
-    Navy in this mission. Additional factions become available later.
-  - Open the Navy dashboard to buy a foundation and your first turret. Money, EXP,
-    and Upgrade Points are separate resources.
+  - Choose Navy to defend the ocean and Main Base. Army and Sky combat are still
+    in development.

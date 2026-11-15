@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: TowerLocked
   Title: Structure locked
   Pages:
-  - This structure or upgrade is not unlocked yet. Its button stays gray and shows
-    the required rank or faction condition.
-  - Gain EXP to advance Navy rank. Army and Sky become available through their faction
-    systems later.
+  - This option is unavailable. Inspect its rank, faction or resource requirement.
+    Earn EXP and Upgrade Points through combat and wave rewards.

@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: CommanderMode
   Title: Commander overview
   Pages:
-  - Expand the minimap for a strategic view of the SAME battlefield. Select cells
-    or towers on the map to build, inspect, upgrade, repair, or sell.
-  - Drag to pan and use zoom controls or the mouse wheel. Close overview to return
-    to physical movement. Construction previews and resource balances stay shared.
+  - 'Press A for commander overview: map left, management right. Movement and turning
+    remain available. Select a card and press the right trigger on a valid cell to
+    build. Select a tower to show its range on both maps and to upgrade, repair or
+    sell. Right grip cancels a build; A closes overview.'

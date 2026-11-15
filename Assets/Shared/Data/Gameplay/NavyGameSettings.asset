@@ -1,0 +1,606 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f907cde8372f188ba5ce3f9c95c89e, type: 3}
+  m_Name: NavyGameSettings
+  m_EditorClassIdentifier: TowerDefence.Battlefield::TowerDefence.Battlefield.NavyGameSettings
+  Enemies:
+  - Id: PatrolBoat
+    Prefab: {fileID: 8688293248646562527, guid: a48366b4e9a2c52ccac8277fdb9235cb, type: 3}
+    AttackProjectile: {fileID: 5601953403685139910, guid: 1935d56ecef07b25bab58c7897c949f7, type: 3}
+    MuzzleLocal: {x: 0, y: 0.614, z: 0.87125003}
+  - Id: Gunboat
+    Prefab: {fileID: 7820323476599873005, guid: 4011e1a1b8f758f9daa91c7fb7fea300, type: 3}
+    AttackProjectile: {fileID: 5601953403685139910, guid: 1935d56ecef07b25bab58c7897c949f7, type: 3}
+    MuzzleLocal: {x: 0, y: 0.666, z: 1.3299999}
+  - Id: FastAssaultBoat
+    Prefab: {fileID: 2043546072539362868, guid: 6fd6200df63da7412884f4a343ce4a0b, type: 3}
+    AttackProjectile: {fileID: 5601953403685139910, guid: 1935d56ecef07b25bab58c7897c949f7, type: 3}
+    MuzzleLocal: {x: 0, y: 0.618, z: 0.82125}
+  - Id: Destroyer
+    Prefab: {fileID: 6981306907988580305, guid: cc5f98be50cbdae6fa7e7c73739231ca, type: 3}
+    AttackProjectile: {fileID: 4621957289743880614, guid: 83c909f08b1384023848d0d2b27cf5d0, type: 3}
+    MuzzleLocal: {x: 0, y: 0.692, z: 1.91}
+  - Id: Battleship
+    Prefab: {fileID: 6876405563240732109, guid: 13f8cb49430e5190988322d2e0389e8a, type: 3}
+    AttackProjectile: {fileID: 5601953403685139910, guid: 1935d56ecef07b25bab58c7897c949f7, type: 3}
+    MuzzleLocal: {x: -0.1771, y: 0.73399997, z: 2.57875}
+  Waves:
+  - Groups:
+    - Archetype: 0
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 35
+    Exp: 20
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 0
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 40
+    Exp: 24
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 0
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 1
+      Count: 1
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 45
+    Exp: 28
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 0
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 1
+      Count: 2
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 50
+    Exp: 32
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 2
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 55
+    Exp: 36
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    Money: 60
+    Exp: 40
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 0
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 1
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 65
+    Exp: 44
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 70
+    Exp: 48
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 3
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 75
+    Exp: 52
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 0
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 80
+    Exp: 56
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 85
+    Exp: 60
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 90
+    Exp: 64
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 3
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 95
+    Exp: 68
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 3
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 1
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 100
+    Exp: 72
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 4
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 3
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 105
+    Exp: 76
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 4
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 110
+    Exp: 80
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 4
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 115
+    Exp: 84
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 4
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 2
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 120
+    Exp: 88
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 5
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 5
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 3
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 125
+    Exp: 92
+    UpgradePoints: 1
+  - Groups:
+    - Archetype: 1
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 2
+      Count: 6
+      SpawnInterval: 1.5
+      Route: 0
+    - Archetype: 3
+      Count: 5
+      SpawnInterval: 2.1
+      Route: 0
+    - Archetype: 4
+      Count: 3
+      SpawnInterval: 2.1
+      Route: 0
+    Money: 130
+    Exp: 96
+    UpgradePoints: 1
+  Tutorial:
+  - PopupId: WaveExplanation
+    Title: Defend the Main Base
+    Instructions: Complete onboarding, prepare your defenses, then select Start wave.
+      Ships approach from different water routes and can attack towers as they pass.
+      Later waves increase enemy strength. Protect the Main Base to continue.
+    Task: 0
+  - PopupId: CommanderMode
+    Title: Movement and controls
+    Instructions: 'Press A for commander overview: map left, management right. Movement
+      and turning remain available. Select a card and press the right trigger on
+      a valid cell to build. Select a tower to show its range on both maps and to
+      upgrade, repair or sell. Right grip cancels a build; A closes overview.'
+    Task: 0
+  - PopupId: BuyTower
+    Title: The management panel
+    Instructions: Left stick moves. Right stick turns. B jumps; press again in the
+      air to double jump. A opens commander overview, X toggles the main panel, and
+      Y toggles the map on your right controller. Right trigger selects. Right grip
+      cancels construction.
+    Task: 0
+  - PopupId: InsufficientMoney
+    Title: Three separate resources
+    Instructions: This action needs more Money or Upgrade Points. Inspect the option
+      to see its exact requirement. Unavailable actions do not spend resources.
+    Task: 0
+  - PopupId: PlaceFoundation
+    Title: Build a foundation
+    Instructions: 'Choose a Navy foundation, point at a green ocean cell, and press
+      the right trigger to place it. Keep shipping lanes clear. Normal foundations
+      have no range bonus; medium gives 1.25x and high gives 1.75x. Right grip cancels
+      without spending Money.
+
+      In physical mode the panel hides when you choose
+      a build item. You can move while placing. X opens the panel again.'
+    Task: 1
+  - PopupId: PlaceTower
+    Title: Build your first turret
+    Instructions: 'Choose a tower, point at a compatible empty foundation, and press
+      the right trigger to build. Preview colors show valid and occupied cells. Money
+      is spent only for a valid placement.
+
+      In physical mode the panel hides
+      when you choose a build item. You can move while placing. X opens the panel
+      again.'
+    Task: 2
+  - PopupId: UpgradeTower
+    Title: Two kinds of upgrades
+    Instructions: Global upgrades spend Upgrade Points and unlock higher tiers for
+      future purchases. Rank requirements still apply. Select a placed tower and
+      Upgrade to improve only that tower using its displayed individual cost. Its
+      foundation and health percentage stay attached.
+    Task: 0
+  - PopupId: RankExplanation
+    Title: Navy ranks
+    Instructions: Your Navy rank and EXP progress are in the panel header. Defeat
+      ships and clear waves to earn EXP. Promotion unlocks catalog options and grants
+      Upgrade Points.
+    Task: 0
+  - PopupId: SellTower
+    Title: Selling versus destruction
+    Instructions: Select a tower, choose Sell, and confirm the displayed Money refund.
+      Sell a mounted tower before selling its foundation.
+    Task: 0
+  - PopupId: RepairTower
+    Title: Repair damaged structures
+    Instructions: Select a damaged tower and choose Repair. The displayed Money cost
+      restores its health. Full-health towers cannot be repaired.
+    Task: 0
+  - PopupId: Minimap
+    Title: One battlefield, two views
+    Instructions: Look at your right controller for the live minimap and Main Base
+      health. Y hides or shows this map. A opens commander overview. Map symbols
+      show you, the base, structures and enemy ships.
+    Task: 0
+  - PopupId: WaveExplanation
+    Title: Prepare and start wave 1
+    Instructions: Complete onboarding, prepare your defenses, then select Start wave.
+      Ships approach from different water routes and can attack towers as they pass.
+      Later waves increase enemy strength. Protect the Main Base to continue.
+    Task: 0
+  UpgradePointsPerRank: 1
+  MaximumEnemiesPerWave: 32
+  ExtraEnemiesPerCycle: 2
+  RandomizeWaterRoutes: 1
+  ScaleEnemies: 1
+  HealthDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0
+      outSlope: 0.03823529
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1.65
+      inSlope: 0.03823529
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DamageDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0
+      outSlope: 0.020588236
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1.35
+      inSlope: 0.020588236
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ArmorDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 0
+      inSlope: 0
+      outSlope: 0.47058824
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 8
+      inSlope: 0.47058824
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  SpeedDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0
+      outSlope: 0.0058823545
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1.1
+      inSlope: 0.0058823545
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  FrequencyDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0
+      outSlope: 0.007058824
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1.12
+      inSlope: 0.007058824
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RewardDifficulty:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 3
+      value: 1
+      inSlope: 0
+      outSlope: 0.011764709
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 20
+      value: 1.2
+      inSlope: 0.011764709
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  EndlessHealthStep: 0.04
+  EndlessDamageStep: 0.025
+  EndlessArmorStep: 0.5
+  EndlessRewardStep: 0.01
+  WaypointVariation: 0.3
+  WaveCompletionPause: 0.8
+  CriticalHealthFraction: 0.25
+  WarningClip: {fileID: 8300000, guid: b7a5b627c5a6a8d1b84ab4dbb1352a9c, type: 3}

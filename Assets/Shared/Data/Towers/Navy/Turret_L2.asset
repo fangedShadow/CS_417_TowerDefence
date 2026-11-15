@@ -20,8 +20,9 @@ MonoBehaviour:
   MaxHealth: 220
   Armor: 0
   Damage: 12
-  AttackRange: 9
+  AttackRange: 11.7
   AttackInterval: 0.85
+  BarrelShotInterval: 0.22
   Targets: 2
   ProjectileSpeed: 16
   ProjectileSize: 1

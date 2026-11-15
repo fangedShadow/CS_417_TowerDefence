@@ -19,6 +19,12 @@ namespace TowerDefence.Shared
         [Min(0)] public float AttackDamage = 10;
         [Min(0)] public float AttackRange = 4;
         [Min(0.05f)] public float AttackInterval = 1;
+        [Header("Naval gun pattern: shared cycle damage divided between its shots")]
+        [Min(1)] public int ShotsPerAttack=1;
+        [Min(.03f)] public float BurstShotInterval=.1f;
+        [Min(.01f)] public float ShotDamageMultiplier=1;
+        [Range(.1f,2)] public float ShotVisualScale=1;
+        [Min(1)] public float ShotSpeed=18;
         [Header("Rewards")]
         [Min(0)] public int MoneyReward = 10;
         [Min(0)] public int ExpReward = 5;

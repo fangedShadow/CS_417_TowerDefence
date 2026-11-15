@@ -2564,6 +2564,8 @@ GameObject:
   - component: {fileID: 7326395240717320717}
   - component: {fileID: 2200282416407663629}
   - component: {fileID: 4180747243777033168}
+  - component: {fileID: 6124526161119710833}
+  - component: {fileID: 2555960217354777461}
   m_Layer: 0
   m_Name: Foundation_Medium
   m_TagString: Untagged
@@ -2655,6 +2657,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.2, y: 1.8, z: 3.2}
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &6124526161119710833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138028783568350078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76d467affd8c25af910bba0443be961, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyOutlineTarget
+--- !u!114 &2555960217354777461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138028783568350078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f4152bf62bbb7b3a129ea508569b86, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyTowerEffects
+  RecoilParts: []
+  RecoilDistance: 0.055
+  RecoilDuration: 0.15
+  PumpPart: {fileID: 0}
 --- !u!1 &7273595881264020934
 GameObject:
   m_ObjectHideFlags: 0

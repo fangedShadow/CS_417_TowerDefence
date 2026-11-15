@@ -23,6 +23,11 @@ MonoBehaviour:
   AttackDamage: 8
   AttackRange: 3
   AttackInterval: 0.5
+  ShotsPerAttack: 3
+  BurstShotInterval: 0.1
+  ShotDamageMultiplier: 0.33333334
+  ShotVisualScale: 0.35
+  ShotSpeed: 27
   MoneyReward: 12
   ExpReward: 7
   StatusEffectResistance: 0

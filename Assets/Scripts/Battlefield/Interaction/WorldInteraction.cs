@@ -13,9 +13,13 @@ namespace TowerDefence.Battlefield
         public ConstructionPreview Preview;
         public Camera PhysicalCamera;
         public XRRayInteractor RightRay;
-        public InputActionReference SelectAction, CancelAction, MenuAction;
+        public NearFarInteractor RightNearFar;
+        public InputActionReference SelectAction, CancelAction, MenuAction, SwitchTabAction, SecondaryMapAction;
         public GamePanelController Panel;
         public bool CommanderOpen { get; set; }
+        public PlacedStructure Hovered {get;private set;}
+        public event System.Action<PlacedStructure> HoverChanged;
+        public void SetHover(PlacedStructure value){if(Hovered==value)return;Hovered=value;HoverChanged?.Invoke(value);}
         private readonly List<RaycastResult> uiHits = new List<RaycastResult>();
         private GameObject selection;
         public Material SelectionMaterial;
@@ -56,13 +60,22 @@ namespace TowerDefence.Battlefield
             if ((CancelAction != null && CancelAction.action.WasPressedThisFrame()) ||
                 (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)) Preview.Cancel();
             if ((MenuAction != null && MenuAction.action.WasPressedThisFrame()) ||
-                (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame)) Panel.ToggleVisible();
+                (Keyboard.current != null && (Keyboard.current.tabKey.wasPressedThisFrame || Keyboard.current.yKey.wasPressedThisFrame))) Panel.ToggleVisible();
+            if ((SwitchTabAction != null && SwitchTabAction.action.WasPressedThisFrame()) ||
+                (Keyboard.current != null && Keyboard.current.xKey.wasPressedThisFrame)) Panel.ToggleCommander();
+            if(SecondaryMapAction!=null&&SecondaryMapAction.action.WasPressedThisFrame())Panel.Hud.ToggleCompact();
             if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && Preview.Entry != null) Preview.Rotate();
             if (CommanderOpen) return;
             bool xr = XRSettings.isDeviceActive;
-            if (xr && RightRay != null)
+            if ((xr || Application.platform == RuntimePlatform.Android) && RightNearFar != null)
             {
-                if (RightRay.TryGetCurrentUIRaycastResult(out var ui) && ui.isValid) return;
+                if (RightNearFar.TryGetCurrentUIRaycastResult(out var ui) && ui.isValid){SetHover(null);return;}
+                var aim = RightNearFar.curveOrigin != null ? RightNearFar.curveOrigin : RightNearFar.transform;
+                HandleRay(new Ray(aim.position, aim.forward), SelectAction != null && SelectAction.action.WasPressedThisFrame());
+            }
+            else if (xr && RightRay != null)
+            {
+                if (RightRay.TryGetCurrentUIRaycastResult(out var ui) && ui.isValid){SetHover(null);return;}
                 HandleRay(new Ray(RightRay.transform.position, RightRay.transform.forward),
                     SelectAction != null && SelectAction.action.WasPressedThisFrame());
             }
@@ -72,7 +85,8 @@ namespace TowerDefence.Battlefield
         public void HandleRay(Ray ray, bool pressed)
         {
             // Player-only safety walls must not obstruct construction or selection rays.
-            if (!Physics.Raycast(ray, out var hit, 250, ~(1 << 2 | 1 << 5 | 1 << 8 | 1 << 9), QueryTriggerInteraction.Collide)) return;
+            if (!Physics.Raycast(ray, out var hit, 250, ~(1 << 2 | 1 << 5 | 1 << 8 | 1 << 9), QueryTriggerInteraction.Collide)){SetHover(null);return;}
+            SetHover(Preview.Entry==null?hit.collider.GetComponentInParent<PlacedStructure>():null);
             if (Preview.Entry != null)
             {
                 Preview.Hover(hit.point);
@@ -81,7 +95,8 @@ namespace TowerDefence.Battlefield
             else if (pressed)
             {
                 Construction.Select(hit.collider.GetComponentInParent<PlacedStructure>());
-                if (Construction.Selected != null) Panel.ShowPhysicalPanel();
+                if (Construction.Selected != null && !CommanderOpen) Panel.ShowPhysicalPanel(true);
+                else if(Construction.Session.Game!=null&&Construction.Session.Game.isActiveAndEnabled)Construction.Session.Game.InspectRegion(hit.point);
             }
         }
     }

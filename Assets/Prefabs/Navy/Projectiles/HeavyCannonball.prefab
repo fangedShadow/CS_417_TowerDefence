@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7137421887574739567}
   - component: {fileID: 4833900594992517222}
   - component: {fileID: 7973814004830629087}
+  - component: {fileID: 468758463013196195}
   m_Layer: 0
   m_Name: HeavyCannonball
   m_TagString: Untagged
@@ -100,6 +101,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &468758463013196195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141550853234728532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd058c79ea47a4651823d248315bac76, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyProjectileEffects
 --- !u!1 &8519943380597166812
 GameObject:
   m_ObjectHideFlags: 0

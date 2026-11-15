@@ -1201,6 +1201,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4227146999582040338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3362428494255303203}
+  m_Layer: 0
+  m_Name: AttackMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3362428494255303203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227146999582040338}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8737685847951715190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5624447694735588052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,7 +1477,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.096, z: 0.35999998}
   m_LocalScale: {x: 0.062399995, y: 0.59999996, z: 0.062399995}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3362428494255303203}
   m_Father: {fileID: 2522338635179687566}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3104862321853880460
@@ -1932,6 +1964,8 @@ GameObject:
   - component: {fileID: 7820323476599873005}
   - component: {fileID: 1763651986205803118}
   - component: {fileID: 8616100710740422552}
+  - component: {fileID: 2678600714107714164}
+  - component: {fileID: 5834596785055178149}
   m_Layer: 0
   m_Name: Gunboat
   m_TagString: Untagged
@@ -2057,6 +2091,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2678600714107714164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037543627053343920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d76b5c85290a6673af2b0cecf35879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyEnemyEffects
+--- !u!114 &5834596785055178149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7037543627053343920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbc9de4a3276c29da60de7986386fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyShipWeapons
+  Guns:
+  - Yaw: {fileID: 2522338635179687566}
+    Barrels:
+    - {fileID: 8737685847951715190}
+    Muzzles:
+    - {fileID: 3362428494255303203}
+  TurnSpeed: 110
+  ElevationSpeed: 65
+  RecoilDistance: 0.08
+  RecoilDuration: 0.22
 --- !u!1 &7243428341442724761
 GameObject:
   m_ObjectHideFlags: 0

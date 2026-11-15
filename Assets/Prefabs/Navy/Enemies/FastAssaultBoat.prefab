@@ -1271,6 +1271,8 @@ GameObject:
   - component: {fileID: 2043546072539362868}
   - component: {fileID: 3289057561842350153}
   - component: {fileID: 6836192437711449844}
+  - component: {fileID: 1161282001849206085}
+  - component: {fileID: 1553053001052994177}
   m_Layer: 0
   m_Name: FastAssaultBoat
   m_TagString: Untagged
@@ -1396,6 +1398,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1161282001849206085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061246113743877490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d76b5c85290a6673af2b0cecf35879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyEnemyEffects
+--- !u!114 &1553053001052994177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5061246113743877490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbc9de4a3276c29da60de7986386fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyShipWeapons
+  Guns:
+  - Yaw: {fileID: 2663995667944637270}
+    Barrels:
+    - {fileID: 1001469420402016838}
+    Muzzles:
+    - {fileID: 6125897854736498103}
+  TurnSpeed: 110
+  ElevationSpeed: 65
+  RecoilDistance: 0.08
+  RecoilDuration: 0.22
 --- !u!1 &5351352997303636104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2183,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8431410905480506721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8281508283938515211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6125897854736498103}
+  m_Layer: 0
+  m_Name: AttackMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6125897854736498103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8281508283938515211}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.57578945, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1001469420402016838}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8305990578623686926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,7 +2244,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.038, z: 0.1425}
   m_LocalScale: {x: 0.024699999, y: 0.2375, z: 0.024699999}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6125897854736498103}
   m_Father: {fileID: 2663995667944637270}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1519968773372156799

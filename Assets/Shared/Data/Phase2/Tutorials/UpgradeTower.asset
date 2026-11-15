@@ -15,8 +15,7 @@ MonoBehaviour:
   Id: UpgradeTower
   Title: Two kinds of upgrades
   Pages:
-  - 'GLOBAL: Tab 2 unlocks the next catalog tier for FUTURE purchases. Towers already
-    placed stay at their current tier.'
-  - 'INDIVIDUAL: Select a placed tower and choose Upgrade. Only that instance changes,
-    its health percentage is preserved, and its foundation/grid cell remain attached.
-    This costs less than its global upgrade.'
+  - Global upgrades spend Upgrade Points and unlock higher tiers for future purchases.
+    Rank requirements still apply. Select a placed tower and Upgrade to improve only
+    that tower using its displayed individual cost. Its foundation and health percentage
+    stay attached.

@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: RepairTower
   Title: How to repair a tower
   Pages:
-  - Select a damaged tower or foundation and choose Repair. The displayed repair
-    cost is paid only when a repair succeeds.
-  - Repairs restore health up to maximum health. Healthy or destroyed structures
-    cannot be repaired, and invalid repairs spend no Money.
+  - Select a damaged tower and choose Repair. The displayed Money cost restores its
+    health. Full-health towers cannot be repaired.

@@ -2047,6 +2047,8 @@ GameObject:
   - component: {fileID: 4141566192931513487}
   - component: {fileID: 8335716103507636650}
   - component: {fileID: 5042244561441170906}
+  - component: {fileID: 6964480113576996759}
+  - component: {fileID: 2080786707716523796}
   m_Layer: 0
   m_Name: NavySupportTower
   m_TagString: Untagged
@@ -2138,6 +2140,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   scanInterval: 0.2
+--- !u!114 &6964480113576996759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798103634649445327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76d467affd8c25af910bba0443be961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyOutlineTarget
+--- !u!114 &2080786707716523796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798103634649445327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f4152bf62bbb7b3a129ea508569b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyTowerEffects
+  RecoilParts: []
+  BarrelAccessories: []
+  RecoilDistance: 0.055
+  RecoilDuration: 0.15
+  ElevationSpeed: 75
+  PumpPart: {fileID: 0}
+  ChargeMovement: 0.018
 --- !u!1 &8911895877367885550
 GameObject:
   m_ObjectHideFlags: 0

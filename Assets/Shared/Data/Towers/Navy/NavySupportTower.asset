@@ -40,6 +40,6 @@ MonoBehaviour:
   PoisonDuration: 0
   PoisonTickInterval: 1
   BuffStrength: 0.25
-  SupportRange: 8
+  SupportRange: 9.6
   ResourceGenerationAmount: 25
   ResourceGenerationInterval: 10

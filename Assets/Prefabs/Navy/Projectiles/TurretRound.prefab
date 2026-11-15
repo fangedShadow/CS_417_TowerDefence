@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5601953403685139910}
   - component: {fileID: 3362585239529958805}
   - component: {fileID: 1527481011914714054}
+  - component: {fileID: 6237107289022189582}
   m_Layer: 0
   m_Name: TurretRound
   m_TagString: Untagged
@@ -190,3 +191,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6237107289022189582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359778651336316527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd058c79ea47a4651823d248315bac76, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyProjectileEffects

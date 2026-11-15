@@ -29,14 +29,14 @@ MonoBehaviour:
   - Prefab: {fileID: 5562103863330220939, guid: dbf47d7776f4ed8aa8e5f30a196bd1cd, type: 3}
     Thumbnail: {fileID: 21300000, guid: 3ea9620181d1cf23cabd2905d62aa6dc, type: 3}
     RequiredRank: 2
-    GlobalMoneyCost: 300
-    GlobalPointCost: 0
+    GlobalMoneyCost: 0
+    GlobalPointCost: 1
     IndividualMoneyCost: 150
     IndividualPointCost: 0
   - Prefab: {fileID: 2337678140457536435, guid: a5b05223521451afdb50f2bab0821430, type: 3}
     Thumbnail: {fileID: 21300000, guid: b95d1d1b6e0685e9f8915e35aa5756fc, type: 3}
     RequiredRank: 3
-    GlobalMoneyCost: 400
-    GlobalPointCost: 0
+    GlobalMoneyCost: 0
+    GlobalPointCost: 2
     IndividualMoneyCost: 200
     IndividualPointCost: 0

@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: SellTower
   Title: How to sell a tower
   Pages:
-  - Select a placed structure and choose Sell. Review the refund amount, then confirm
-    the sale. The structure is removed and Money returns to the shared balance.
-  - Sell a mounted tower before its foundation. A canceled sale removes nothing and
-    refunds nothing.
+  - Select a tower, choose Sell, and confirm the displayed Money refund. Sell a mounted
+    tower before selling its foundation.
