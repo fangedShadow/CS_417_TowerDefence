@@ -14,14 +14,16 @@ namespace TowerDefence.Battlefield
         public bool Valid { get; private set; }
         public float Rotation { get; private set; }
         private GameObject ghost;
+        public GameObject Ghost => ghost;
+        public event System.Action<GameObject> Cancelled;
         private readonly Dictionary<GridCell, Renderer> markers = new Dictionary<GridCell, Renderer>();
         private Renderer[] ghostRenderers;
         public event System.Action Changed;
         private void OnEnable() { if (Construction != null) Construction.Session.Changed += Refresh; }
-        private void OnDisable() { if (Construction != null) Construction.Session.Changed -= Refresh; Cancel(); }
+        private void OnDisable() { if (Construction != null) Construction.Session.Changed -= Refresh; Clear(false); }
         public void Begin(ConstructionDefinition entry)
         {
-            Cancel(); Entry = entry; Rotation = 0;
+            Clear(false); Entry = entry; Rotation = 0;
             int tier = Construction.Session.GlobalTier(entry);
             ghost = Instantiate(entry.Tiers[tier].Prefab);
             ghost.name = "PlacementPreview";
@@ -61,7 +63,7 @@ namespace TowerDefence.Battlefield
                 pair.Value.sharedMaterial = allowed ? ValidMaterial : pair.Key.Occupied ? OccupiedMaterial : InvalidMaterial;
             }
             Valid = Construction.Validate(Entry, HoveredCell, out string reason);
-            Reason = Valid ? "Confirm to construct" : reason;
+            Reason = Valid ? "Press right trigger to build" : reason;
             if (ghost != null)
             {
                 ghost.SetActive(HoveredCell != null);
@@ -84,10 +86,13 @@ namespace TowerDefence.Battlefield
         {
             if (Entry == null) return false;
             if (!Construction.TryBuild(Entry, HoveredCell, Quaternion.Euler(0, Rotation, 0), out _)) return false;
-            Cancel(); return true;
+            Clear(false); return true;
         }
         public void Cancel()
+        { Clear(true); }
+        private void Clear(bool cancelled)
         {
+            if (cancelled && Entry != null) Cancelled?.Invoke(ghost);
             if (ghost != null) Destroy(ghost);
             foreach (var renderer in markers.Values) if (renderer != null) Destroy(renderer.gameObject);
             markers.Clear(); ghost = null; Entry = null; HoveredCell = null; Valid = false; Reason = string.Empty;

@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: RankExplanation
   Title: How Navy ranks work
   Pages:
-  - Earn EXP to progress through Seaman, Petty Officer, Lieutenant, Commander, and
-    Admiral. The dashboard shows your progress and the next EXP threshold.
-  - Higher ranks unlock structures and upgrade tiers. Money buys structures and repairs;
-    Upgrade Points are a separate balance used by advanced upgrades.
+  - Your Navy rank and EXP progress are in the panel header. Defeat ships and clear
+    waves to earn EXP. Promotion unlocks catalog options and grants Upgrade Points.

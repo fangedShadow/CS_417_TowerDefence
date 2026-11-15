@@ -15,7 +15,8 @@ MonoBehaviour:
   Id: PlaceTower
   Title: How to place a tower
   Pages:
-  - Select a structure, point at a valid green cell, and review its preview. Rotate
-    if needed, then Confirm. Cancel does not spend Money.
-  - Navy towers need an empty compatible foundation. In physical mode use your ray;
-    in commander mode point at the live map. Both operate on the same structures.
+  - Choose a tower, point at a compatible empty foundation, and press the right trigger
+    to build. Preview colors show valid and occupied cells. Money is spent only for
+    a valid placement.
+  - In physical mode the panel hides when you choose a build item. You can move while
+    placing. X opens the panel again.

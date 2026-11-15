@@ -1363,6 +1363,8 @@ GameObject:
   - component: {fileID: 948697058500213160}
   - component: {fileID: 8488359934942942210}
   - component: {fileID: 7605961775522576591}
+  - component: {fileID: 8379661162504605081}
+  - component: {fileID: 4388552763952816777}
   m_Layer: 0
   m_Name: OilExtractor_L2
   m_TagString: Untagged
@@ -1452,6 +1454,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.OilExtractor
   resourceProvider: {fileID: 0}
   productionRemaining: 0
+--- !u!114 &8379661162504605081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5562103863330220939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76d467affd8c25af910bba0443be961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyOutlineTarget
+--- !u!114 &4388552763952816777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5562103863330220939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f4152bf62bbb7b3a129ea508569b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyTowerEffects
+  RecoilParts: []
+  BarrelAccessories: []
+  RecoilDistance: 0.055
+  RecoilDuration: 0.15
+  ElevationSpeed: 75
+  PumpPart: {fileID: 1720925276332395242}
+  ChargeMovement: 0.018
 --- !u!1 &5600665518259746547
 GameObject:
   m_ObjectHideFlags: 0

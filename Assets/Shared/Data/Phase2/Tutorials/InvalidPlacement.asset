@@ -15,7 +15,6 @@ MonoBehaviour:
   Id: InvalidPlacement
   Title: Invalid placement
   Pages:
-  - 'Choose a valid cell: green is valid, red is invalid, and purple marks occupied
-    cells. Navy foundations belong on water.'
-  - Navy towers need an empty compatible foundation. Do not build on canyon routes,
-    base walls, land, or an occupied mounting point.
+  - Point at a green compatible cell before pressing the right trigger. Foundations
+    need free ocean cells, and towers need compatible empty foundations. Shipping
+    lanes must stay clear. Right grip exits placement.

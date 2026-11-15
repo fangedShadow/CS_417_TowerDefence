@@ -18,6 +18,8 @@ namespace TowerDefence.Shared
         [Min(0)] public float Damage = 10;
         [Min(0)] public float AttackRange = 8;
         [Min(0.05f)] public float AttackInterval = 1;
+        [Tooltip("Turret L2/L3: seconds between scheduled barrel groups. Zero uses AttackInterval.")]
+        [Min(0)] public float BarrelShotInterval;
         public TargetDomain Targets = TargetDomain.Water;
         [Header("Projectiles and special attacks")]
         [Min(0.1f)] public float ProjectileSpeed = 15;

@@ -15,7 +15,6 @@ MonoBehaviour:
   Id: Minimap
   Title: Your live minimap
   Pages:
-  - 'The bottom-right minimap is a live overhead view: base, land, ocean, and built
-    structures update together.'
-  - Expand it to commander overview for construction and management. There is only
-    one battlefield and one shared resource wallet.
+  - Look at your right controller for the live minimap and Main Base health. Y hides
+    or shows this map. A opens commander overview. Map symbols show you, the base,
+    structures and enemy ships.

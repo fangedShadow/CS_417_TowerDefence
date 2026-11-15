@@ -15,7 +15,6 @@ MonoBehaviour:
   Id: WaveExplanation
   Title: How waves work
   Pages:
-  - Enemy waves approach the shared base by land, water, or air. Protect its health
-    and survive increasingly difficult attacks.
-  - Defeated enemies reward resources through the combat and wave systems. Use the
-    time between attacks to build, upgrade, and repair.
+  - Complete onboarding, prepare your defenses, then select Start wave. Ships approach
+    from different water routes and can attack towers as they pass. Later waves increase
+    enemy strength. Protect the Main Base to continue.

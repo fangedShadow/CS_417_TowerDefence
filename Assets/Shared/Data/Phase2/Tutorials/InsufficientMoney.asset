@@ -15,7 +15,5 @@ MonoBehaviour:
   Id: InsufficientMoney
   Title: Insufficient resources
   Pages:
-  - This operation needs more Money or Upgrade Points. Check the displayed cost and
-    your balances. No resources were deducted.
-  - Oil Extractors produce resources over time. Enemy rewards and progression connect
-    through the shared combat/wave systems.
+  - This action needs more Money or Upgrade Points. Inspect the option to see its
+    exact requirement. Unavailable actions do not spend resources.

@@ -180,6 +180,37 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &695552132575062095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4094243525591746926}
+  m_Layer: 0
+  m_Name: AttackMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4094243525591746926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695552132575062095}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5257143, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6045231972001829936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847030391268219009
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +601,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.112, z: 0.42000002}
   m_LocalScale: {x: 0.072799996, y: 0.7, z: 0.072799996}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4094243525591746926}
   m_Father: {fileID: 4313280276734488565}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8512052964087265046
@@ -1830,7 +1862,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.096, z: 0.35999998}
   m_LocalScale: {x: 0.062399995, y: 0.59999996, z: 0.062399995}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6750347750951559905}
   m_Father: {fileID: 609802874435362847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4492717596137052472
@@ -2091,6 +2124,8 @@ GameObject:
   - component: {fileID: 6981306907988580305}
   - component: {fileID: 901620103335761120}
   - component: {fileID: 654764968150528744}
+  - component: {fileID: 673995012912008679}
+  - component: {fileID: 292880195444063012}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Untagged
@@ -2216,6 +2251,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &673995012912008679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210029045216555394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d76b5c85290a6673af2b0cecf35879e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyEnemyEffects
+--- !u!114 &292880195444063012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210029045216555394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbc9de4a3276c29da60de7986386fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyShipWeapons
+  Guns:
+  - Yaw: {fileID: 4313280276734488565}
+    Barrels:
+    - {fileID: 6045231972001829936}
+    Muzzles:
+    - {fileID: 4094243525591746926}
+  - Yaw: {fileID: 609802874435362847}
+    Barrels:
+    - {fileID: 3910236297487091611}
+    Muzzles:
+    - {fileID: 6750347750951559905}
+  TurnSpeed: 110
+  ElevationSpeed: 65
+  RecoilDistance: 0.08
+  RecoilDuration: 0.22
 --- !u!1 &6322843576473152227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,6 +2954,37 @@ Transform:
   - {fileID: 4118700987738474149}
   - {fileID: 3910236297487091611}
   m_Father: {fileID: 5925138264707907627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7424020735761073081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6750347750951559905}
+  m_Layer: 0
+  m_Name: AttackMuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6750347750951559905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424020735761073081}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3910236297487091611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7852283173753924186
 GameObject:

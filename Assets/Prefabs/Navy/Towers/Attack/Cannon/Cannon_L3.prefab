@@ -765,6 +765,37 @@ Transform:
   - {fileID: 6668468875044307179}
   m_Father: {fileID: 4711188506722451368}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2305633097468696934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8588053353446708541}
+  m_Layer: 0
+  m_Name: FX_Muzzle_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8588053353446708541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2305633097468696934}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5822222, z: -0.00000014024621}
+  m_LocalScale: {x: 1.1764705, y: 1.1764702, z: 0.55555546}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5267815554099609212}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2338781101619965609
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,6 +899,8 @@ GameObject:
   - component: {fileID: 2411013332312272163}
   - component: {fileID: 422283944535071140}
   - component: {fileID: 1169267420876204183}
+  - component: {fileID: 1732160603604625256}
+  - component: {fileID: 5409995484361611318}
   m_Layer: 0
   m_Name: Cannon_L3
   m_TagString: Untagged
@@ -959,12 +992,47 @@ MonoBehaviour:
   yawPivot: {fileID: 7673481464688163085}
   mountPoint: {fileID: 7456484309966429009}
   muzzles:
-  - {fileID: 7871971839190711568}
+  - {fileID: 8588053353446708541}
   projectilePrefab: {fileID: 3593094529204144416, guid: 737e9aea45f7a9819b3cbebbcd6612be, type: 3}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   scanInterval: 0.1
+  turnSpeed: 160
+--- !u!114 &1732160603604625256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406205015165218361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76d467affd8c25af910bba0443be961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyOutlineTarget
+--- !u!114 &5409995484361611318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406205015165218361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f4152bf62bbb7b3a129ea508569b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TowerDefence.Navy::TowerDefence.Navy.NavyTowerEffects
+  RecoilParts:
+  - {fileID: 5267815554099609212}
+  BarrelAccessories:
+  - Parts:
+    - {fileID: 2848147337026204711}
+  RecoilDistance: 0.32
+  RecoilDuration: 0.25
+  ElevationSpeed: 75
+  PumpPart: {fileID: 0}
+  ChargeMovement: 0.018
 --- !u!1 &3803574487429686789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +2041,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0.65}
   m_LocalScale: {x: 0.85, y: 1.8, z: 0.85}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8588053353446708541}
   m_Father: {fileID: 7673481464688163085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &344745633189636082

@@ -5,17 +5,20 @@ using UnityEngine;
 
 namespace TowerDefence.Battlefield
 {
-    public sealed class BattlefieldSession : MonoBehaviour
+    public sealed class BattlefieldSession : MonoBehaviour, IProductionActivity
     {
         public PlayerResourceConfig ResourceConfig;
         public FactionRankData NavyRanks;
         public ConstructionDefinition[] Catalog = Array.Empty<ConstructionDefinition>();
+        public PlayableNavyGame Game { get; internal set; }
+        public bool ProductionActive=>Game!=null&&Game.isActiveAndEnabled&&Game.State==NavyGameState.WaveActive&&Game.Waves.Running;
         private PlayerResources resources;
         private readonly Dictionary<string, int> globalTiers = new Dictionary<string, int>();
         private readonly HashSet<Faction> activeFactions = new HashSet<Faction> { Faction.Navy };
         private readonly Dictionary<Faction, FactionRankData> additionalRanks = new Dictionary<Faction, FactionRankData>();
         public event Action Changed;
         public event Action<Faction> FactionRequested;
+        public event Action<Faction> FactionActivated;
         public PlayerResources Resources
         {
             get
@@ -44,11 +47,14 @@ namespace TowerDefence.Battlefield
         public int GlobalTier(ConstructionDefinition entry) => entry != null && globalTiers.TryGetValue(entry.Id, out int tier) ? tier : 0;
         public void SetGlobalTier(ConstructionDefinition entry, int tier) { globalTiers[entry.Id] = Mathf.Clamp(tier, 0, entry.Tiers.Length - 1); NotifyChanged(); }
         public bool FactionActive(Faction faction) => activeFactions.Contains(faction);
+        public void BeginFactionSelection()
+        { activeFactions.Clear(); NotifyChanged(); }
         public void RegisterFaction(Faction faction, FactionRankData ranks = null)
         {
-            activeFactions.Add(faction);
+            bool newlyActive = activeFactions.Add(faction);
             if (ranks != null && ranks.Faction == faction) additionalRanks[faction] = ranks;
             NotifyChanged();
+            if (newlyActive) FactionActivated?.Invoke(faction);
         }
         public int RankNumberFor(Faction faction) => faction == Faction.Navy ? RankNumber :
             additionalRanks.TryGetValue(faction, out var data) ? data.IndexFor(Resources.Exp) + 1 : 0;

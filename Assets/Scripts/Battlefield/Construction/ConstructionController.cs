@@ -5,18 +5,33 @@ using UnityEngine;
 namespace TowerDefence.Battlefield
 {
     public enum CatalogState { Locked, Unaffordable, Available }
+    public enum ConstructionAction { Built, GlobalUpgrade, IndividualUpgrade, Repaired, Sold }
     public sealed class ConstructionController : MonoBehaviour
     {
         public BattlefieldSession Session;
         public BattlefieldGrid Grid;
         public Transform StructureRoot;
+        public HealthBarView TowerHealthPrefab;
         public PlacedStructure Selected { get; private set; }
         public event Action<PlacedStructure> SelectionChanged;
         public event Action<string, bool> Feedback;
+        public event Action<ConstructionAction, PlacedStructure, ConstructionDefinition, Vector3> Completed;
         private bool busy;
+        private bool CanManage(out string reason)
+        {
+            var game=Session!=null?Session.Game:null;
+            if(game!=null&&game.isActiveAndEnabled&&!game.CanManage)
+            {
+                reason=game.State==NavyGameState.GameOver?"Game over — restart to begin a new session.":
+                    game.State==NavyGameState.FactionUnlock?"Confirm the faction region unlock before continuing.":"Choose Navy before managing defenses.";
+                return false;
+            }
+            reason=string.Empty;return true;
+        }
         public CatalogState State(ConstructionDefinition entry, out string reason)
         {
             reason = string.Empty;
+            if(!CanManage(out reason))return CatalogState.Locked;
             if (entry == null || entry.Tiers.Length == 0 || !Session.FactionActive(entry.Faction))
             { reason = "Faction not available"; return CatalogState.Locked; }
             var tier = entry.Tiers[Session.GlobalTier(entry)];
@@ -31,6 +46,9 @@ namespace TowerDefence.Battlefield
         {
             if (State(entry, out reason) != CatalogState.Available) return false;
             if (cell == null || !cell.Definition.Buildable) { reason = "Not a buildable cell"; return false; }
+            if(Session.Game!=null&&Session.Game.isActiveAndEnabled&&!Session.Game.Regions.Allows(entry,cell,Grid,out reason))return false;
+            if(Session.Game!=null&&Session.Game.isActiveAndEnabled&&Session.Game.Waves.IsShippingLane(Grid.World(cell)))
+            {reason="Keep the naval approach lanes clear";return false;}
             if (entry.IsFoundation)
             {
                 if (cell.Definition.Surface != BuildSurface.Water) { reason = "Navy foundations require water"; return false; }
@@ -46,6 +64,7 @@ namespace TowerDefence.Battlefield
             }
             else if (cell.Definition.Surface != BuildSurface.Land || cell.Occupied)
             { reason = "Requires free land"; return false; }
+            if(Session.Game!=null&&Session.Game.isActiveAndEnabled&&!Session.Game.SpaceAvailable(entry,cell,out reason))return false;
             reason = string.Empty; return true;
         }
         private PlacedStructure Create(ConstructionDefinition entry, int tier, GridCell cell, Quaternion rotation)
@@ -84,19 +103,21 @@ namespace TowerDefence.Battlefield
                 { instance.Retire(); Destroy(instance.gameObject); reason = "Insufficient Money"; return Fail(reason); }
                 if (entry.IsFoundation) cell.Foundation = instance; else cell.Structure = instance;
                 Select(instance); Session.NotifyChanged();
-                reason = "Built " + entry.DisplayName; Feedback?.Invoke(reason, true); return true;
+                reason = "Built " + entry.DisplayName; Feedback?.Invoke(reason, true);
+                Completed?.Invoke(ConstructionAction.Built, instance, entry, instance.transform.position); return true;
             }
             finally { busy = false; }
         }
         public bool GlobalUpgradeReason(ConstructionDefinition entry, out string reason)
         {
+            if(!CanManage(out reason))return false;
             if (entry == null || !Session.FactionActive(entry.Faction)) { reason = "Faction unavailable"; return false; }
             int next = Session.GlobalTier(entry) + 1;
             if (next >= entry.Tiers.Length) { reason = "Maximum global tier reached"; return false; }
             var tier = entry.Tiers[next];
             if (Session.RankNumberFor(entry.Faction) < tier.RequiredRank) { reason = "Requires rank " + tier.RequiredRank; return false; }
-            if (Session.Resources.Money < tier.GlobalMoneyCost || Session.Resources.UpgradePoints < tier.GlobalPointCost)
-            { reason = "Need " + tier.GlobalMoneyCost + " Money and " + tier.GlobalPointCost + " Upgrade Points"; return false; }
+            if (Session.Resources.UpgradePoints < tier.GlobalPointCost)
+            { reason = "Need " + tier.GlobalPointCost + " Upgrade Points"; return false; }
             reason = string.Empty; return true;
         }
         public bool TryGlobalUpgrade(ConstructionDefinition entry, out string reason)
@@ -108,22 +129,22 @@ namespace TowerDefence.Battlefield
             {
                 int next = Session.GlobalTier(entry) + 1;
                 var tier = entry.Tiers[next];
-                if (!Session.Resources.TrySpend(tier.GlobalMoneyCost, tier.GlobalPointCost))
+                if (!Session.Resources.TrySpend(0, tier.GlobalPointCost))
                 { reason = "Insufficient resources"; return Fail(reason); }
                 Session.SetGlobalTier(entry, next);
                 reason = "Future " + entry.DisplayName + " builds now use tier " + (next + 1);
-                Feedback?.Invoke(reason, true); return true;
+                Feedback?.Invoke(reason, true);
+                Completed?.Invoke(ConstructionAction.GlobalUpgrade, null, entry, transform.position); return true;
             }
             finally { busy = false; }
         }
         public bool IndividualUpgradeReason(PlacedStructure target, out string reason)
         {
+            if(!CanManage(out reason))return false;
             if (target == null || !target.Alive) { reason = "Select a surviving structure"; return false; }
             int next = target.TierIndex + 1;
             if (next >= target.Definition.Tiers.Length) { reason = "Maximum upgrade reached"; return false; }
             var tier = target.Definition.Tiers[next];
-            if (tier.IndividualMoneyCost >= tier.GlobalMoneyCost)
-            { reason = "Individual upgrade must cost less than global upgrade"; return false; }
             if (Session.RankNumberFor(target.Definition.Faction) < tier.RequiredRank) { reason = "Requires rank " + tier.RequiredRank; return false; }
             if (Session.Resources.Money < tier.IndividualMoneyCost || Session.Resources.UpgradePoints < tier.IndividualPointCost)
             { reason = "Need " + tier.IndividualMoneyCost + " Money and " + tier.IndividualPointCost + " Upgrade Points"; return false; }
@@ -157,12 +178,14 @@ namespace TowerDefence.Battlefield
                 else cell.Structure = replacement;
                 target.Retire(); Destroy(target.gameObject);
                 Select(replacement); Session.NotifyChanged();
-                reason = "Upgraded this structure only"; Feedback?.Invoke(reason, true); return true;
+                reason = "Upgraded this structure only"; Feedback?.Invoke(reason, true);
+                Completed?.Invoke(ConstructionAction.IndividualUpgrade, replacement, replacement.Definition, replacement.transform.position); return true;
             }
             finally { busy = false; }
         }
         public bool TryRepair(PlacedStructure target, out string reason)
         {
+            if(!CanManage(out reason))return Fail(reason);
             if (busy) { reason = "Please wait"; return false; }
             if (target == null || !target.Alive) { reason = "Select a surviving structure"; return Fail(reason); }
             var health = target.Runtime.Health;
@@ -173,12 +196,14 @@ namespace TowerDefence.Battlefield
                 if (!Session.Resources.TrySpend(target.Runtime.Stats.RepairCost, 0))
                 { reason = "Insufficient Money"; return Fail(reason); }
                 health.Repair(health.MaxHealth); Session.NotifyChanged();
-                reason = "Repaired to full health"; Feedback?.Invoke(reason, true); return true;
+                reason = "Repaired to full health"; Feedback?.Invoke(reason, true);
+                Completed?.Invoke(ConstructionAction.Repaired, target, target.Definition, target.transform.position); return true;
             }
             finally { busy = false; }
         }
         public bool TrySell(PlacedStructure target, out string reason)
         {
+            if(!CanManage(out reason))return Fail(reason);
             if (busy) { reason = "Please wait"; return false; }
             if (target == null || !target.Alive) { reason = "Select a surviving structure"; return Fail(reason); }
             if (target.Definition.IsFoundation && target.Cell.Structure != null)
@@ -189,7 +214,8 @@ namespace TowerDefence.Battlefield
                 int refund = target.Runtime.Stats.SellValue;
                 Clear(target); target.Retire(); Destroy(target.gameObject);
                 Session.Resources.AddMoney(refund); Select(null); Session.NotifyChanged();
-                reason = "Sold for " + refund + " Money"; Feedback?.Invoke(reason, true); return true;
+                reason = "Sold for " + refund + " Money"; Feedback?.Invoke(reason, true);
+                Completed?.Invoke(ConstructionAction.Sold, target, target.Definition, target.transform.position); return true;
             }
             finally { busy = false; }
         }

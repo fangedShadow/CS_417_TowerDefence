@@ -20,15 +20,16 @@ MonoBehaviour:
   MaxHealth: 370
   Armor: 0
   Damage: 100
-  AttackRange: 18
+  AttackRange: 25.2
   AttackInterval: 5
+  BarrelShotInterval: 0
   Targets: 2
   ProjectileSpeed: 12
   ProjectileSize: 1
   SplashRadius: 0
   ArmorPenetration: 0
-  WaveWidth: 5
-  WaveRange: 18
+  WaveWidth: 3.2
+  WaveRange: 25.2
   AbilityCooldown: 5
   PurchaseCost: 540
   UpgradeCost: 0
@@ -42,4 +43,6 @@ MonoBehaviour:
   BuffStrength: 0.25
   SupportRange: 8
   ResourceGenerationAmount: 25
+  ResourceExpGenerationAmount: 0
+  ResourceUpgradePointGenerationAmount: 0
   ResourceGenerationInterval: 10

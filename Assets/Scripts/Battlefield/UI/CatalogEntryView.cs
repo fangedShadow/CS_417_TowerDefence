@@ -31,7 +31,7 @@ namespace TowerDefence.Battlefield
             Title.text = definition.DisplayName + "  •  L" + (current + 1);
             var stats = now.Stats;
             if (!global)
-                Details.text = stats.PurchaseCost + " Money  |  " + stats.MaxHealth + " HP  |  Range " + stats.AttackRange;
+                Details.text = stats.PurchaseCost + " Money  |  Catalog tier " + (current+1);
             else
             {
                 int next = current + 1;
@@ -41,10 +41,8 @@ namespace TowerDefence.Battlefield
                 else
                 {
                     var to = definition.Tiers[next];
-                    var after = to.Stats;
-                    Details.text = "L" + (current + 1) + " → L" + (next + 1) + "  |  " + to.GlobalMoneyCost + " Money + " + to.GlobalPointCost + " Points\n" +
-                        "HP " + stats.MaxHealth + "→" + after.MaxHealth + "  Dmg " + stats.Damage + "→" + after.Damage + "  Range " + stats.AttackRange + "→" + after.AttackRange;
-                    state = eligible ? CatalogState.Available : panel.Session.RankNumberFor(definition.Faction) < to.RequiredRank || !panel.Session.FactionActive(definition.Faction) ?
+                    Details.text = "L" + (current + 1) + " → L" + (next + 1) + "  |  " + to.GlobalPointCost + " Upgrade Points\nRequires rank " + to.RequiredRank;
+                    state = eligible ? CatalogState.Available : panel.Session.Game!=null&&panel.Session.Game.isActiveAndEnabled&&!panel.Session.Game.CanManage || panel.Session.RankNumberFor(definition.Faction) < to.RequiredRank || !panel.Session.FactionActive(definition.Faction) ?
                         CatalogState.Locked : CatalogState.Unaffordable;
                 }
             }
@@ -52,6 +50,7 @@ namespace TowerDefence.Battlefield
             Action.interactable = state == CatalogState.Available;
             Background.color = state == CatalogState.Locked ? new Color(0.22f, 0.25f, 0.28f) :
                 state == CatalogState.Unaffordable ? new Color(0.48f, 0.12f, 0.14f) : new Color(0.08f, 0.25f, 0.31f);
+            var feedback=Action.GetComponent<UnavailableActionFeedback>();if(feedback!=null)feedback.Configure(panel,reason);
             Thumbnail.sprite = now.Thumbnail;
             Thumbnail.enabled = now.Thumbnail != null;
         }

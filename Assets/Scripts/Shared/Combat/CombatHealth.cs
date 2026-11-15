@@ -15,6 +15,7 @@ namespace TowerDefence.Shared
         public bool IsAlive => currentHealth > 0;
         public event Action<DamageInfo> Damaged;
         public event Action Died;
+        public event Action Changed;
 
         public void Initialize(float maximum, float armor = 0, float kinetic = 0,
             float energy = 0, float poison = 0)
@@ -25,6 +26,7 @@ namespace TowerDefence.Shared
             kineticResistance = Mathf.Clamp01(kinetic);
             energyResistance = Mathf.Clamp01(energy);
             poisonResistance = Mathf.Clamp01(poison);
+            Changed?.Invoke();
         }
         public void TakeDamage(DamageInfo damage)
         {
@@ -35,6 +37,7 @@ namespace TowerDefence.Shared
                 100f / (100f + Mathf.Max(0, armor - damage.ArmorPenetration)) : 1;
             currentHealth = Mathf.Max(0, currentHealth - damage.Amount * mitigation * (1 - resistance));
             Damaged?.Invoke(damage);
+            Changed?.Invoke();
             if (!IsAlive)
             {
                 Died?.Invoke();
@@ -43,12 +46,12 @@ namespace TowerDefence.Shared
         }
         public void Repair(float amount)
         {
-            if (IsAlive) currentHealth = Mathf.Min(maxHealth, currentHealth + Mathf.Max(0, amount));
+            if (IsAlive) { currentHealth = Mathf.Min(maxHealth, currentHealth + Mathf.Max(0, amount)); Changed?.Invoke(); }
         }
         // Construction replacement preserves the surviving instance's health percentage.
         public void PreserveReplacementHealth(float fraction)
         {
-            if (IsAlive) currentHealth = maxHealth * Mathf.Clamp(fraction, 0.0001f, 1);
+            if (IsAlive) { currentHealth = maxHealth * Mathf.Clamp(fraction, 0.0001f, 1); Changed?.Invoke(); }
         }
     }
 }

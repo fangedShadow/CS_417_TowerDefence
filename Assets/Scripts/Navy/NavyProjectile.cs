@@ -21,10 +21,21 @@ namespace TowerDefence.Navy
         private float slowStrength, slowDuration, poisonDamage, poisonDuration, poisonTickInterval;
         public NavyProjectileKind Kind => kind;
         public bool IsLaunched => launched && !finished;
+        public TowerRuntime Owner { get; private set; }
+        private CombatHealth baseTarget;
+        public CombatHealth HostileTarget=>baseTarget;
+        public float HostileDamage=>targetsBase?damage.Amount:0;
+        private Vector3 baseAim;
+        private bool targetsBase;
+        public event System.Action Launched;
+        public event System.Action<Vector3> Impacted;
+        public event System.Action Finished;
 
         public void Launch(TowerRuntime owner, Vector3 heading)
         {
             var stats = owner.Stats;
+            targetsBase = false;
+            Owner = owner;
             direction = heading.sqrMagnitude > 0.0001f ? heading.normalized : transform.forward;
             transform.rotation = Quaternion.LookRotation(direction);
             speed = Mathf.Max(0.1f, stats.ProjectileSpeed);
@@ -54,6 +65,20 @@ namespace TowerDefence.Navy
             hit.Clear();
             launched = true;
             finished = false;
+            Launched?.Invoke();
+        }
+        // Enemy naval fire uses the same projectile, damage receiver and presentation lifecycle.
+        public void LaunchAtBase(EnemyRuntime attacker,CenterBase target,Vector3 aimPoint)
+        {LaunchAtStructure(attacker,target.Health,aimPoint);}
+        public void LaunchAtStructure(EnemyRuntime attacker,CombatHealth target,Vector3 aimPoint)
+        {
+            Owner=null;targetsBase=true;baseTarget=target;baseAim=aimPoint;
+            var heading=aimPoint-transform.position;direction=heading.sqrMagnitude>.0001f?heading.normalized:transform.forward;
+            transform.rotation=Quaternion.LookRotation(direction);speed=Mathf.Max(1,attacker.Stats.ShotSpeed);
+            float size=Mathf.Clamp(attacker.Stats.ShotVisualScale,.1f,2);transform.localScale*=size;
+            remainingDistance=Mathf.Max(1,heading.magnitude+2);radius=collisionRadius*size;
+            damage=new DamageInfo(attacker.AttackDamage*Mathf.Max(.01f,attacker.Stats.ShotDamageMultiplier),DamageKind.Kinetic,attacker);
+            hit.Clear();launched=true;finished=false;Launched?.Invoke();
         }
         private void Update() => Advance(Time.deltaTime);
         public void Advance(float deltaTime)
@@ -62,6 +87,17 @@ namespace TowerDefence.Navy
             float step = Mathf.Min(remainingDistance, speed * deltaTime);
             Vector3 start = transform.position;
             Vector3 end = start + direction * step;
+            if(targetsBase)
+            {
+                if(baseTarget==null||!baseTarget.IsAlive){Finish();return;}
+                var segment=end-start;
+                float t=segment.sqrMagnitude>.000001f?Mathf.Clamp01(Vector3.Dot(baseAim-start,segment)/segment.sqrMagnitude):0;
+                if((start+segment*t-baseAim).sqrMagnitude<=Mathf.Pow(radius+.12f,2))
+                {
+                    transform.position=baseAim;Impacted?.Invoke(baseAim);baseTarget.TakeDamage(damage);Finish();return;
+                }
+                transform.position=end;remainingDistance-=step;if(remainingDistance<=0)Finish();return;
+            }
             if (kind == NavyProjectileKind.Wave)
             {
                 // Swept capsule avoids tunnelling; the hit set allows one hit per enemy per wave.
@@ -100,6 +136,7 @@ namespace TowerDefence.Navy
         }
         private void Impact(IEnemyTarget direct, Vector3 position)
         {
+            Impacted?.Invoke(position);
             // Always hit the direct target, even when its aim point lies outside the splash sphere.
             HitTarget(direct);
             if (splashRadius > 0)
@@ -110,6 +147,7 @@ namespace TowerDefence.Navy
         private void HitTarget(IEnemyTarget target)
         {
             if (!hit.Add(target.AimTransform)) return;
+            if (kind == NavyProjectileKind.Wave) Impacted?.Invoke(target.AimTransform.position);
             target.TakeDamage(damage);
             if ((kind != NavyProjectileKind.SlowBolt && kind != NavyProjectileKind.ToxicBolt) ||
                 !NavyTargeting.Valid(target, domains)) return;
@@ -119,6 +157,6 @@ namespace TowerDefence.Navy
             if (poisonDamage > 0)
                 receiver.ApplyPoison(statusSource, poisonDamage, poisonDuration, poisonTickInterval);
         }
-        private void Finish() { finished = true; Destroy(gameObject); }
+        private void Finish() { finished = true; Finished?.Invoke(); Destroy(gameObject); }
     }
 }

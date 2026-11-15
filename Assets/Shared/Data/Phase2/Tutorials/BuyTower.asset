@@ -15,7 +15,6 @@ MonoBehaviour:
   Id: BuyTower
   Title: How to buy a tower
   Pages:
-  - Open the construction panel. Choose a structure that is unlocked and affordable.
-    Red buttons need more Money; gray buttons show locked requirements.
-  - Use the controller trigger or mouse to point at the battlefield, or expand the
-    live minimap into commander overview.
+  - Left stick moves. Right stick turns. B jumps; press again in the air to double
+    jump. A opens commander overview, X toggles the main panel, and Y toggles the
+    map on your right controller. Right trigger selects. Right grip cancels construction.

@@ -15,5 +15,5 @@ MonoBehaviour:
   Id: MaximumUpgrade
   Title: Maximum upgrade reached
   Pages:
-  - This structure or global catalog entry is already at its highest available tier.
-    No resources were deducted.
+  - This structure or catalog entry has reached its maximum tier. Choose another
+    structure or continue defending the Main Base.

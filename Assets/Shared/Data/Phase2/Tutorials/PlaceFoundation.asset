@@ -15,7 +15,9 @@ MonoBehaviour:
   Id: PlaceFoundation
   Title: Navy foundations
   Pages:
-  - Navy foundations must be built on an empty water grid cell before a tower can
-    be mounted. Foundations cannot overlap other structures.
-  - Normal gives 1x tower range; Medium gives 1.25x; High gives 1.75x. Each supports
-    one Navy structure on its top mounting point.
+  - Choose a Navy foundation, point at a green ocean cell, and press the right trigger
+    to place it. Keep shipping lanes clear. Normal foundations have no range bonus;
+    medium gives 1.25x and high gives 1.75x. Right grip cancels without spending
+    Money.
+  - In physical mode the panel hides when you choose a build item. You can move while
+    placing. X opens the panel again.

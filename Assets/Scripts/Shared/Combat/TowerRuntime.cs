@@ -13,6 +13,7 @@ namespace TowerDefence.Shared
         private readonly Dictionary<Object, TowerBuff> buffs = new Dictionary<Object, TowerBuff>();
         public TowerStatsData Stats => stats;
         public TowerUpgradeData Upgrade => upgrade;
+        public TowerBuff ActiveBuff => new TowerBuff(Strongest(0), Strongest(1), Strongest(2));
         public CombatHealth Health { get; private set; }
         public Faction Faction => stats != null ? stats.Faction : Faction.Navy;
         public TowerKind Kind => stats != null ? stats.Kind : TowerKind.Resource;
