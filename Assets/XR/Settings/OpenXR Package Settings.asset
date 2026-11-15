@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Standalone
   m_EditorClassIdentifier: Unity.XR.OpenXR::UnityEngine.XR.OpenXR.Features.Interactions.OculusTouchControllerProfile
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Android
   m_EditorClassIdentifier: Unity.XR.OpenXR::UnityEngine.XR.OpenXR.Features.Interactions.OculusTouchControllerProfile
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -986,12 +986,12 @@ MonoBehaviour:
   features:
   - {fileID: -8428843607558218096}
   - {fileID: 7436931904480034744}
-  - {fileID: 5839898665302960661}
+  - {fileID: -5370272412394774580}
   - {fileID: 5037846669118653227}
   - {fileID: 7205310668147746987}
-  - {fileID: -2915600900881128729}
+  - {fileID: -6988149460386419399}
   - {fileID: 2715569188482927278}
-  - {fileID: 997911906757354389}
+  - {fileID: -6928789613827263395}
   - {fileID: 2649940586285893375}
   - {fileID: -4173269206203801954}
   - {fileID: -1427727939113740497}
@@ -1000,7 +1000,7 @@ MonoBehaviour:
   - {fileID: 403828020885058271}
   - {fileID: 6347755053644728180}
   - {fileID: -2382324997567282581}
-  - {fileID: 1889943220379612126}
+  - {fileID: 428283604609331410}
   - {fileID: 2516050526056390134}
   - {fileID: 150534047751283235}
   - {fileID: 837403488723746660}
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
   m_Name: OculusQuestFeature Android
   m_EditorClassIdentifier: Unity.XR.OpenXR.Features.OculusQuestSupport::UnityEngine.XR.OpenXR.Features.OculusQuestSupport.OculusQuestFeature
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Quest Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.oculusquest

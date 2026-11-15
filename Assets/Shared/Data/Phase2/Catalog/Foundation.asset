@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f151df1d07cec7dc8891eca4ffecab3, type: 3}
+  m_Name: Foundation
+  m_EditorClassIdentifier: TowerDefence.Battlefield::TowerDefence.Battlefield.ConstructionDefinition
+  Id: navy.foundation
+  DisplayName: Navy Foundation
+  Faction: 1
+  Kind: 5
+  RequiresFoundation: 0
+  SupportedTowerKinds: 0000000001000000020000000300000004000000
+  Tiers:
+  - Prefab: {fileID: 2554440118883514345, guid: 2e6c6a53aa92e102482fd495b1b98fb2, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 126ebb747a4e05e0eb4a2754a6cb080d, type: 3}
+    RequiredRank: 1
+    GlobalMoneyCost: 0
+    GlobalPointCost: 0
+    IndividualMoneyCost: 0
+    IndividualPointCost: 0
+  - Prefab: {fileID: 7138028783568350078, guid: f01c09109700514058711a4865a49e0a, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 0f4ce6c5538f8765a9f6b49243b023da, type: 3}
+    RequiredRank: 2
+    GlobalMoneyCost: 200
+    GlobalPointCost: 0
+    IndividualMoneyCost: 100
+    IndividualPointCost: 0
+  - Prefab: {fileID: 3252017278546432905, guid: 82b8a1a9d118e95378d1b70197a13eb8, type: 3}
+    Thumbnail: {fileID: 21300000, guid: 8b3e586dcc3a2bc13b885fc31aedab86, type: 3}
+    RequiredRank: 3
+    GlobalMoneyCost: 350
+    GlobalPointCost: 0
+    IndividualMoneyCost: 175
+    IndividualPointCost: 0

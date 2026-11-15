@@ -45,5 +45,10 @@ namespace TowerDefence.Shared
         {
             if (IsAlive) currentHealth = Mathf.Min(maxHealth, currentHealth + Mathf.Max(0, amount));
         }
+        // Construction replacement preserves the surviving instance's health percentage.
+        public void PreserveReplacementHealth(float fraction)
+        {
+            if (IsAlive) currentHealth = maxHealth * Mathf.Clamp(fraction, 0.0001f, 1);
+        }
     }
 }
